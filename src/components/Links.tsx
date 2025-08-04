@@ -4,10 +4,10 @@
 const Links = () => {
   return (
     <div className="flex flex-col items-end justify-end min-h-[40vh] py-12 pr-40 w-full">
-      <h2 className="font-montserrat text-7xl text-primary max-w-3xl mb-4 pr-60">
+      <h2 className="font-montserrat text-6xl text-primary max-w-3xl pr-72">
         Let's
       </h2>
-      <h2 className="font-montserrat text-7xl text-primary max-w-3xl mb-4 pr-8">
+      <h2 className="font-montserrat text-6xl text-primary max-w-3xl pr-24">
         Connect!
       </h2>
       <div className="flex gap-8 mt-6">
