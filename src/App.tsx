@@ -7,8 +7,8 @@ function App() {
   return (
     <div data-theme="luxury">
       <Intro />
-      <Projects />
       <Skills />
+      <Projects />
       <Links />
     </div>
   );
