@@ -3,7 +3,7 @@ const Navbar = () => {
     <nav className="w-full flex items-center justify-between h-16 px-6 pl-10 pr-10 bg-base-200/80 backdrop-blur border-b border-gray-700/30 fixed top-0 left-0 z-50">
       {/* Left Icon */}
       <div className="flex items-center gap-2">
-        <a href="/">
+        <a href="#">
           <img
             src="favicon2.svg"
             alt="Logo"

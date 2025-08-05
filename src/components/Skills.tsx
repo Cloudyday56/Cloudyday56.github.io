@@ -46,7 +46,16 @@ const Skills = () => {
               making journey.
             </p>
             <div className="flex flex-row gap-2 mt-2">
-              <img src="/gms2.png" alt="GameMaker Studio 2" className="h-12 w-12 rounded-xl bg-[#232531] p-1" />
+              <img
+                src="/gms2.png"
+                alt="GameMaker Studio 2"
+                className="h-12 w-12 rounded-xl bg-[#232531] p-1"
+              />
+              <img
+                src="/aseprite.png"
+                alt="Aseprite"
+                className="h-12 w-12 rounded-xl bg-[#232531] p-1"
+              />
               <img
                 src="https://skillicons.dev/icons?i=godot,unity&theme=dark"
                 alt="Game Dev Skills"

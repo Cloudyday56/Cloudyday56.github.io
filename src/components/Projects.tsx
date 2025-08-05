@@ -67,8 +67,7 @@ const Projects = () => {
             </a>
           </div>
           <p className="text-gray-300 mb-4">
-            A 2D platformer game made with GameMaker Studio 2 (Description
-            placeholder)
+            A 2D platformer game made with GameMaker Studio 2
           </p>
           <div className="flex gap-3 mt-auto">
             <a
@@ -92,7 +91,7 @@ const Projects = () => {
             </span>
             <p className="text-gray-300 mb-4">
               An AI-powered fitness assistant that helps users plan and track
-              workouts. (Description placeholder)
+              workouts.
             </p>
             <div className="flex gap-3 mt-auto">
               <a
@@ -129,7 +128,6 @@ const Projects = () => {
             </span>
             <p className="text-gray-300 mb-4">
               A real-time chat web application for group and private messaging.
-              (Description placeholder)
             </p>
             <div className="flex gap-3 mt-auto">
               <a
