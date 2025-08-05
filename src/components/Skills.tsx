@@ -7,8 +7,11 @@
 
 const Skills = () => {
   return (
-    <div className="flex flex-col min-h-[60vh] max-w-7xl mx-auto bg-base-800 px-0 py-8 w-full gap-12">
-      <div className="pl-8 pt-20">
+    <div
+      id="skills"
+      className="flex flex-col min-h-[60vh] max-w-7xl mx-auto bg-base-800 px-4 w-full gap-12"
+    >
+      <div className="pt-20">
         <p className="font-montserrat text-6xl text-primary max-w-3xl mb-8">
           Interests & Skills
         </p>
@@ -63,10 +66,10 @@ const Skills = () => {
           <div className="flex flex-col gap-2">
             <h3 className="text-2xl font-bold text-secondary">SWE</h3>
             <p className="text-base text-gray-300">
-              I've developed several programming skills in-school as well as through personal
-              projects.
-              Machine learning and AI has been an ongoing interest of mine, and
-              I've been learning related concepts continuously.
+              I've developed several programming skills in-school as well as
+              through personal projects. Machine learning and AI has been an
+              ongoing interest of mine, and I've been learning related concepts
+              continuously.
             </p>
             <div className="flex flex-row gap-4 mt-2">
               {/* Skill images go here */}
