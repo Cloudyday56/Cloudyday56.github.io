@@ -1,9 +1,9 @@
 const Navbar = () => {
   return (
-    <nav className="w-full flex items-center justify-between h-16 px-6 bg-base-200/80 backdrop-blur border-b border-gray-700/30 fixed top-0 left-0 z-50">
+    <nav className="w-full flex items-center justify-between h-16 px-6 pl-10 pr-10 bg-base-200/80 backdrop-blur border-b border-gray-700/30 fixed top-0 left-0 z-50">
       {/* Left Icon */}
       <div className="flex items-center gap-2">
-        <a href="/">
+        <a href="#">
           <img
             src="favicon2.svg"
             alt="Logo"
@@ -12,15 +12,10 @@ const Navbar = () => {
         </a>
       </div>
       {/* Navigation Links */}
-      <ul className="flex gap-8 text-base font-medium">
+      <ul className="flex gap-8 text-base font-medium absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <li>
           <a href="#intro" className="hover:text-primary transition-colors">
-            Intro
-          </a>
-        </li>
-        <li>
-          <a href="#projects" className="hover:text-primary transition-colors">
-            Projects
+            Bio
           </a>
         </li>
         <li>
@@ -29,8 +24,13 @@ const Navbar = () => {
           </a>
         </li>
         <li>
+          <a href="#projects" className="hover:text-primary transition-colors">
+            Projects
+          </a>
+        </li>
+        <li>
           <a href="#links" className="hover:text-primary transition-colors">
-            Links
+            Social
           </a>
         </li>
       </ul>

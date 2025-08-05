@@ -3,9 +3,12 @@
 
 const Intro = () => {
   return (
-    <div className="flex min-h-[60vh] max-w-7xl mx-auto bg-base-800 px-0 py-8 items-center w-full">
+    <div
+      id="intro"
+      className="flex min-h-screen max-w-7xl mx-auto bg-base-800 px-0 py-8 items-center w-full"
+    >
       {/* Bio */}
-      <div className="flex flex-col flex-[7] items-start text-left pl-8 pt-40">
+      <div className="flex flex-col flex-[7] items-start text-left pl-8 pt-64">
         <p className="font-montserrat text-6xl text-primary max-w-3xl">
           Hi! <br />
           I'm Ru, <br />
