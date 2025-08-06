@@ -6,7 +6,6 @@
 import { useState } from "react";
 
 const Projects = () => {
-
   // Modal state for image preview (GM-platform)
   const [modalImg, setModalImg] = useState<string | null>(null);
 
@@ -15,7 +14,7 @@ const Projects = () => {
       <p className="font-montserrat text-6xl text-primary max-w-3xl mb-8">
         Recent Projects
       </p>
-      {/* Top: Two main project cards */}
+      {/* Main project cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="bg-base-200 rounded-xl shadow-lg p-8 flex flex-col justify-between min-h-[220px]">
           <h3 className="text-2xl font-bold text-primary mb-2">StockMounts</h3>
@@ -36,9 +35,9 @@ const Projects = () => {
           <div className="text-primary mb-4">
             <p className="mb-4 text-justify">
               StockMounts is a full-stack web application for stock prediction
-              and trading note management, developed with the MERN stack. It
-              uses machine learning models to generate stock forecasts and
-              provides secure, authenticated user accounts.
+              and trading note management. It uses machine learning models to
+              generate stock forecasts and provides secure, authenticated user
+              accounts.
             </p>
             <ul className="list-disc list-outside space-y-2 mt-4 pl-4 text-sm text-gray-400">
               <li>
@@ -169,18 +168,33 @@ const Projects = () => {
           </div>
         </div>
       </div>
-      {/* Bottom: List of smaller projects */}
+      {/* Side projects */}
       <div className="flex flex-col gap-4">
-        {/* Side Project 1 */}
+        {/* Fitbuddy */}
         <div className="bg-base-200 rounded-lg p-5 flex flex-col md:flex-row justify-between min-h-[160px]">
           <div className="flex-1 flex flex-col justify-between">
-            <span className="text-lg font-semibold text-primary mb-2">
+            <span className="text-2xl font-semibold text-primary mb-2">
               FitBuddy - Fitness AI Agent
             </span>
-            <p className="text-gray-300 mb-4">
-              An AI-powered fitness assistant that helps users plan and track
-              workouts.
-            </p>
+            <div className="text-gray-300 mb-4">
+              <p className="max-w-[70%]">
+                FitBuddy is an AI-powered fitness assistant developed with
+                Next.js. It collects user information through an interactive
+                "phone call" and generates personalized workout and diet plans
+                tailored to each user's needs.
+              </p>
+              <ul className="list-disc list-outside space-y-1 mt-2 pl-4 text-sm text-gray-400">
+                <li>User authentication and management via Clerk and Convex</li>
+                <li>
+                  Interactive AI "phone call" to collect user fitness goals and
+                  preferences
+                </li>
+                <li>
+                  Generates customized workout and nutrition plans using AI
+                </li>
+                <li>Clean, responsive UI for easy plan tracking</li>
+              </ul>
+            </div>
             <div className="flex gap-3 mt-auto">
               <a
                 href="https://fitbuddy-ai.vercel.app"
@@ -208,18 +222,28 @@ const Projects = () => {
             />
           </div>
         </div>
-        {/* Side Project 2 */}
+        {/* TeaChat */}
         <div className="bg-base-200 rounded-lg p-5 flex flex-col md:flex-row justify-between min-h-[160px]">
           <div className="flex-1 flex flex-col justify-between">
-            <span className="text-lg font-semibold text-primary mb-2">
+            <span className="text-2xl font-semibold text-primary mb-2">
               TeaChat - Chatting Web App
             </span>
-            <p className="text-gray-300 mb-4">
-              A real-time chat web application for group and private messaging.
-            </p>
+            <div className="text-gray-300 mb-4">
+              <p className="max-w-[70%]">
+                TeaChat is a real-time chat web application built with the MERN
+                stack. Users can sign in, chat privately with other users, and
+                enjoy instant message updates powered by socket.io.
+              </p>
+              <ul className="list-disc list-outside space-y-1 mt-2 pl-4 text-sm text-gray-400">
+                <li>User authentication and secure sign-in</li>
+                <li>Private one-on-one chat between users</li>
+                <li>Real-time messaging and updates using socket.io</li>
+                <li>Simple, responsive UI for seamless chatting</li>
+              </ul>
+            </div>
             <div className="flex gap-3 mt-auto">
               <a
-                href="https://teachat.onrender.com" // Replace with actual website
+                href="https://teachat.onrender.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-xs btn-primary font-semibold"
