@@ -17,7 +17,9 @@ const Projects = () => {
       {/* Main project cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="bg-base-200 rounded-xl shadow-lg p-8 flex flex-col justify-between min-h-[220px]">
-          <h3 className="text-2xl font-bold text-primary mb-2">StockMounts</h3>
+          <h3 className="text-2xl font-bold text-secondary mb-2">
+            StockMounts
+          </h3>
           <div className="w-full flex justify-center mb-4">
             <a
               href="https://stockmounts.onrender.com"
@@ -74,7 +76,9 @@ const Projects = () => {
           </div>
         </div>
         <div className="bg-base-200 rounded-xl shadow-lg p-8 flex flex-col justify-between min-h-[220px]">
-          <h3 className="text-2xl font-bold text-primary mb-2">GM-platform</h3>
+          <h3 className="text-2xl font-bold text-secondary mb-2">
+            GM-platform
+          </h3>
           <div className="w-full flex justify-center mb-4">
             <a
               href="https://github.com/Cloudyday56/GM-platform"
@@ -173,7 +177,7 @@ const Projects = () => {
         {/* Fitbuddy */}
         <div className="bg-base-200 rounded-lg p-5 flex flex-col md:flex-row justify-between min-h-[160px]">
           <div className="flex-1 flex flex-col justify-between">
-            <span className="text-2xl font-semibold text-primary mb-2">
+            <span className="text-2xl font-semibold text-secondary mb-2">
               FitBuddy - Fitness AI Agent
             </span>
             <div className="text-gray-300 mb-4">
@@ -225,7 +229,7 @@ const Projects = () => {
         {/* TeaChat */}
         <div className="bg-base-200 rounded-lg p-5 flex flex-col md:flex-row justify-between min-h-[160px]">
           <div className="flex-1 flex flex-col justify-between">
-            <span className="text-2xl font-semibold text-primary mb-2">
+            <span className="text-2xl font-semibold text-secondary mb-2">
               TeaChat - Chatting Web App
             </span>
             <div className="text-gray-300 mb-4">
