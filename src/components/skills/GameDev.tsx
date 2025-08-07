@@ -1,13 +1,15 @@
 const GameDev = () => {
   return (
-    <div className="flex flex-col gap-2">
-      <h3 className="text-2xl font-bold text-secondary">Game Development</h3>
-      <p className="text-base text-gray-300">
+    <div className="flex flex-col gap-6 h-full justify-center">
+      <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-2 text-center">
+        Game Development
+      </h3>
+      <p className="text-lg md:text-xl text-gray-300 text-center max-w-2xl mx-auto">
         Game dev has been a new and strong interest for me. I used and learned
         tools like GameMaker, Godot, Aseprite and Blender along my game making
         journey. Related skills:
       </p>
-      <ul className="list-none text-base text-gray-300 pl-8 mb-2 mt-2">
+      <ul className="list-none text-lg md:text-xl text-gray-300 pl-0 md:pl-8 mb-4 mt-4 max-w-2xl mx-auto">
         <li>
           - 2D game development with{" "}
           <span className="text-gray-500 font-medium">GameMaker Studio 2</span>,{" "}
@@ -24,21 +26,21 @@ const GameDev = () => {
         <li>- Level design and playtesting</li>
         <li>- Collaboration with artists and developers</li>
       </ul>
-      <div className="flex flex-row gap-2 mt-2">
+      <div className="flex flex-row flex-wrap gap-3 mt-8 justify-center items-center w-full">
         <img
           src="/gms.png"
           alt="GameMaker Studio 2"
-          className="h-12 w-12 rounded-xl bg-[#232531] p-0.5"
+          className="h-14 w-14 rounded-xl bg-[#232531] p-0.5"
         />
         <img
           src="/aseprite.png"
           alt="Aseprite"
-          className="h-12 w-12 rounded-xl bg-[#b1b1b8] p-1"
+          className="h-14 w-14 rounded-xl bg-[#b1b1b8] p-1"
         />
         <img
           src="https://skillicons.dev/icons?i=godot,blender&theme=dark"
           alt="Game Dev Skills"
-          className="h-12"
+          className="h-14"
         />
       </div>
     </div>

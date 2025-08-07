@@ -38,16 +38,18 @@ const Skills = () => {
       // Set timeout immediately to block further scrolls
       let moved = false;
       if (e.deltaY > 0 && !atLast) {
+        // scroll down
         scrollTimeout.current = window.setTimeout(() => {
           scrollTimeout.current = null;
         }, 1000);
-        setCurrentIdx((idx) => Math.min(idx + 1, sections.length - 1));
+        setCurrentIdx((idx) => Math.min(idx + 1, sections.length - 1)); // upper bound
         moved = true;
       } else if (e.deltaY < 0 && !atFirst) {
+        // scroll up
         scrollTimeout.current = window.setTimeout(() => {
           scrollTimeout.current = null;
         }, 1000);
-        setCurrentIdx((idx) => Math.max(idx - 1, 0));
+        setCurrentIdx((idx) => Math.max(idx - 1, 0)); // lower bound
         moved = true;
       }
       // Always prevent default
@@ -66,49 +68,65 @@ const Skills = () => {
     <div
       id="skills"
       ref={containerRef}
-      className="flex flex-col min-h-[60vh] max-w-7xl mx-auto bg-base-800 px-4 w-full gap-12"
+      className="flex items-center justify-center min-h-screen max-w-7xl mx-auto bg-base-800 px-4 w-full relative"
       tabIndex={0}
     >
-      <div className="pt-20">
-        <div className="flex flex-col md:flex-row gap-10 items-start">
-          {/* Left: Interests & Skills Title */}
-          <div className="md:w-1/3 w-full flex-shrink-0">
-            <p className="font-montserrat text-6xl text-primary mb-8 md:mb-0 md:sticky md:top-32">
-              Interests & Skills
-            </p>
-          </div>
-          {/* Right: Animated Skills Section + Dot Indicator */}
-          <div className="md:w-2/3 w-full flex flex-col gap-10 min-h-[300px] relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={sections[currentIdx].key}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
-                className="absolute w-full"
-              >
-                {sections[currentIdx].component}
-              </motion.div>
-            </AnimatePresence>
-            {/* Dot Indicator */}
-            <div className="flex justify-center items-center gap-3 mt-8 z-10">
-              {sections.map((section, idx) => (
-                <button
-                  key={section.key}
-                  aria-label={`Go to ${section.key} skills`}
-                  onClick={() => setCurrentIdx(idx)}
-                  className={`w-3 h-3 rounded-full border-2 transition-all duration-200
-                    ${
-                      idx === currentIdx
-                        ? "bg-primary border-primary scale-125"
-                        : "bg-base-200 border-base-300 hover:border-primary"
-                    }`}
-                  style={{ outline: "none" }}
-                />
-              ))}
-            </div>
-          </div>
+      <div className="flex flex-col md:flex-row gap-10 items-start w-full">
+        {/* Left: Interests & Skills Title */}
+        <div className="md:w-1/3 w-full flex-shrink-0 flex min-h-[500px] items-center justify-start">
+          <p className="font-montserrat text-6xl text-primary md:mb-0 mb-8 md:sticky md:top-32">
+            Interests <br />& Skills
+          </p>
+        </div>
+        {/* Right: Animated Skills Section */}
+        <div className="md:w-2/3 w-full flex flex-col gap-10 min-h-[500px] relative items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={sections[currentIdx].key}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6 }}
+              className="absolute w-full flex flex-col items-center justify-center"
+              style={{ top: "2.5rem" }}
+            >
+              {sections[currentIdx].component}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        {/* Dot Indicator */}
+        <div className="hidden md:flex flex-col gap-4 items-center absolute right-4 top-1/2 -translate-y-1/2 z-20">
+          {sections.map((section, idx) => (
+            <button
+              key={section.key}
+              aria-label={`Go to ${section.key} skills`}
+              onClick={() => setCurrentIdx(idx)}
+              className={`w-3 h-3 rounded-full border-2 transition-all duration-200
+                ${
+                  idx === currentIdx
+                    ? "bg-primary border-primary scale-125"
+                    : "bg-base-200 border-base-300 hover:border-primary"
+                }`}
+              style={{ outline: "none" }}
+            />
+          ))}
+        </div>
+        {/* Mobile: horizontal dots below */}
+        <div className="flex md:hidden justify-center items-center gap-3 mt-8 z-10 w-full">
+          {sections.map((section, idx) => (
+            <button
+              key={section.key}
+              aria-label={`Go to ${section.key} skills`}
+              onClick={() => setCurrentIdx(idx)}
+              className={`w-3 h-3 rounded-full border-2 transition-all duration-200
+                ${
+                  idx === currentIdx
+                    ? "bg-primary border-primary scale-125"
+                    : "bg-base-200 border-base-300 hover:border-primary"
+                }`}
+              style={{ outline: "none" }}
+            />
+          ))}
         </div>
       </div>
     </div>
