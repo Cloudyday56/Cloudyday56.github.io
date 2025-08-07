@@ -5,15 +5,15 @@ const Links = () => {
   return (
     <div
       id="links"
-      className="flex flex-col items-end justify-end min-h-[40vh] py-12 pr-40 w-full"
+      className="flex flex-col items-center justify-center min-h-[40vh] py-12 w-full"
     >
-      <h2 className="font-montserrat text-6xl text-primary max-w-3xl pr-72">
+      <h2 className="font-montserrat text-6xl text-primary max-w-3xl pr-72 pb-3">
         Let's
       </h2>
-      <h2 className="font-montserrat text-6xl text-primary max-w-3xl pr-24">
+      <h2 className="font-montserrat text-6xl text-primary max-w-3xl">
         Connect!
       </h2>
-      <div className="flex gap-8 mt-6">
+      <div className="flex gap-8 mt-6 pl-48">
         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
           <img
             src="cv.png"
