@@ -1,24 +1,19 @@
+const features = [
+  "User authentication and secure sign-in",
+  "Private one-on-one chat between users",
+  "Real-time messaging and updates using socket.io",
+  "Simple, responsive UI for seamless chatting",
+];
+
 const TeaChat = () => {
   return (
-    <div className="bg-base-200 rounded-lg p-5 flex flex-col md:flex-row justify-between min-h-[160px]">
-      <div className="flex-1 flex flex-col justify-between">
-        <span className="text-2xl font-semibold text-secondary mb-2">
+    <div className="w-full flex flex-col items-center gap-2">
+      {/* Top row: Title and Buttons */}
+      <div className="w-full flex flex-row items-center justify-between">
+        <h3 className="text-2xl font-bold text-secondary text-left">
           TeaChat - Chatting Web App
-        </span>
-        <div className="text-gray-300 mb-4">
-          <p className="max-w-[70%]">
-            TeaChat is a real-time chat web application built with the MERN
-            stack. Users can sign in, chat privately with other users, and enjoy
-            instant message updates powered by socket.io.
-          </p>
-          <ul className="list-disc list-outside space-y-1 mt-2 pl-4 text-sm text-gray-400">
-            <li>User authentication and secure sign-in</li>
-            <li>Private one-on-one chat between users</li>
-            <li>Real-time messaging and updates using socket.io</li>
-            <li>Simple, responsive UI for seamless chatting</li>
-          </ul>
-        </div>
-        <div className="flex gap-3 mt-auto">
+        </h3>
+        <div className="flex gap-3 pr-8">
           <a
             href="https://teachat.onrender.com"
             target="_blank"
@@ -37,12 +32,30 @@ const TeaChat = () => {
           </a>
         </div>
       </div>
-      <div className="flex items-center justify-center md:ml-8 mt-4 md:mt-0 w-full md:w-40">
-        <img
-          src="/Teachat1.png"
-          alt="TeaChat preview"
-          className="w-full md:w-40 h-24 object-cover rounded-lg shadow"
-        />
+
+      {/* Middle row: Image and Features */}
+      <div className="w-full flex flex-col md:flex-row items-center justify-center gap-4">
+        <div className="block md:w-2/5 w-full max-w-md">
+          <img
+            src="/Teachat1.png"
+            alt="TeaChat preview"
+            className="w-full h-auto aspect-video object-cover rounded-lg shadow border border-base-300"
+          />
+        </div>
+        <ul className="list-disc list-outside space-y-2 pl-6 text-sm text-gray-400 bg-base-200 rounded-lg p-4 w-full md:w-2/5 max-w-xs">
+          {features.map((f, i) => (
+            <li key={i}>{f}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Bottom row: Description */}
+      <div className="w-full max-w-3xl px-8">
+        <p className="text-primary text-base text-justify">
+          TeaChat is a real-time chat web application built with the MERN stack.
+          Users can sign in, chat privately with other users, and enjoy instant
+          message updates powered by socket.io.
+        </p>
       </div>
     </div>
   );

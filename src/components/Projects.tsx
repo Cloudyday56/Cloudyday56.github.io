@@ -71,13 +71,14 @@ const Projects = () => {
     >
       <div className="flex flex-col md:flex-row gap-10 items-start w-full">
         {/* Left: Projects Title */}
-        <div className="md:w-1/3 w-full flex-shrink-0 flex min-h-[500px] items-center justify-start">
+        <div className="md:w-1/3 w-full flex-shrink-0 flex min-h-[600px] items-center justify-start">
           <p className="font-montserrat text-6xl text-primary md:mb-0 mb-8 md:sticky md:top-32">
-            Recent <br />Projects
+            Recent <br />
+            Projects
           </p>
         </div>
         {/* Right: Animated Project Screen */}
-        <div className="md:w-2/3 w-full flex flex-col gap-10 min-h-[500px] relative items-center justify-center">
+        <div className="md:w-2/3 w-full flex flex-col gap-10 min-h-[600px] relative items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={projectScreens[currentIdx].key}
@@ -86,7 +87,7 @@ const Projects = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6 }}
               className="absolute w-full flex flex-col items-center"
-              style={{ top: "2.5rem", maxHeight: "70vh", overflow: "auto" }}
+              style={{ top: "1rem", maxHeight: "80vh", overflow: "auto" }}
             >
               {projectScreens[currentIdx].component}
             </motion.div>

@@ -1,28 +1,28 @@
+
 const StockMounts = () => {
+  
   return (
-    <div className="bg-base-200 rounded-xl shadow-lg p-8 flex flex-col justify-between min-h-[220px]">
-      <h3 className="text-2xl font-bold text-secondary mb-2">StockMounts</h3>
-      <div className="w-full flex justify-center mb-4">
+    <div className="w-full flex flex-col items-center gap-6">
+      {/* 1. Title */}
+      <h3 className="text-3xl font-bold text-secondary text-center">
+        StockMounts
+      </h3>
+
+      {/* 2. Image and Features Row */}
+      <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8">
         <a
           href="https://stockmounts.onrender.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full"
+          className="block md:w-2/5 w-full max-w-xl"
         >
           <img
             src="/Stockmounts.png"
             alt="StockMounts preview"
-            className="w-full h-full object-cover rounded-lg shadow hover:opacity-80 transition-opacity"
+            className="w-full h-auto aspect-video object-cover rounded-lg shadow hover:opacity-80 transition-opacity border border-base-300"
           />
         </a>
-      </div>
-      <div className="text-primary mb-4">
-        <p className="mb-4 text-justify">
-          StockMounts is a full-stack web application for stock prediction and
-          trading note management. It uses machine learning models to generate
-          stock forecasts and provides secure, authenticated user accounts.
-        </p>
-        <ul className="list-disc list-outside space-y-2 mt-4 pl-4 text-sm text-gray-400">
+        <ul className="list-disc list-outside space-y-2 pl-6 text-sm text-gray-400 bg-base-200 rounded-lg p-4 w-full md:w-2/5 max-w-md">
           <li>
             Developed with MongoDB, Express, React, and Node.js (MERN stack)
           </li>
@@ -37,12 +37,23 @@ const StockMounts = () => {
           <li>Modern, responsive UI built with Tailwind CSS</li>
         </ul>
       </div>
-      <div className="flex gap-3 mt-auto">
+
+      {/* 3. Description Row */}
+      <div className="w-full max-w-3xl">
+        <p className="text-primary text-base text-justify">
+          StockMounts is a full-stack web application for stock prediction and
+          trading note management. It uses machine learning models to generate
+          stock forecasts and provides secure, authenticated user accounts.
+        </p>
+      </div>
+
+      {/* 4. Buttons Row */}
+      <div className="flex gap-4 mt-2 justify-center">
         <a
           href="https://stockmounts.onrender.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-sm btn-primary font-semibold"
+          className="btn btn-primary font-semibold"
         >
           Website
         </a>
@@ -50,7 +61,7 @@ const StockMounts = () => {
           href="https://github.com/Cloudyday56/StockMounts"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-sm btn-outline font-semibold"
+          className="btn btn-outline font-semibold"
         >
           Repo
         </a>
