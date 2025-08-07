@@ -172,6 +172,7 @@ const Projects = () => {
           </div>
         </div>
       </div>
+
       {/* Side projects */}
       <div className="flex flex-col gap-4">
         {/* Fitbuddy */}
@@ -194,7 +195,7 @@ const Projects = () => {
                   preferences
                 </li>
                 <li>
-                  Generates customized workout and nutrition plans using AI
+                  Generates customized workout and nutrition plans using Gemini API
                 </li>
                 <li>Clean, responsive UI for easy plan tracking</li>
               </ul>
@@ -204,7 +205,7 @@ const Projects = () => {
                 href="https://fitbuddy-ai.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-xs btn-primary font-semibold"
+                className="btn btn-sm btn-primary font-semibold"
               >
                 Website
               </a>
@@ -212,7 +213,7 @@ const Projects = () => {
                 href="https://github.com/Cloudyday56/FitBuddy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-xs btn-outline font-semibold"
+                className="btn btn-sm btn-outline font-semibold"
               >
                 Repo
               </a>
@@ -250,7 +251,7 @@ const Projects = () => {
                 href="https://teachat.onrender.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-xs btn-primary font-semibold"
+                className="btn btn-sm btn-primary font-semibold"
               >
                 Website
               </a>
@@ -258,7 +259,7 @@ const Projects = () => {
                 href="https://github.com/Cloudyday56/TeaChat"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-xs btn-outline font-semibold"
+                className="btn btn-sm btn-outline font-semibold"
               >
                 Repo
               </a>
