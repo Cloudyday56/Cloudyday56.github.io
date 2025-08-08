@@ -20,7 +20,7 @@ const Intro = () => {
       {/* Profile Picture and Title */}
       <div className="flex flex-col flex-[3] pr-8 items-center">
         <img
-          src="/avatar.png" // change to profile
+          src="/profile.png"
           alt="Profile"
           className="w-77 h-77 object-cover rounded-full shadow-lg border-4 border-primary"
         />
