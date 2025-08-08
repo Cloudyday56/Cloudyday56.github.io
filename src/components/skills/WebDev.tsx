@@ -1,14 +1,14 @@
 const WebDev = () => {
   return (
-    <div className="flex flex-col gap-6 h-full justify-center">
-      <h3 className="text-4xl md:text-5xl font-bold text-secondary mb-2 text-center">
+    <div className="flex flex-col gap-6 2xl:gap-10 h-full justify-center">
+      <h3 className="text-4xl md:text-5xl 2xl:text-6xl font-bold text-secondary mb-2 text-center">
         Web Development
       </h3>
-      <p className="text-lg md:text-xl text-gray-300 text-center max-w-2xl mx-auto">
+      <p className="text-lg md:text-xl 2xl:text-2xl text-gray-300 text-center max-w-2xl 2xl:max-w-[800px] mx-auto 2xl:leading-normal">
         I have experience in full stack web development, where I work with APIs,
         databases and UI/UX design. Related skills:
       </p>
-      <ul className="list-none text-lg md:text-xl text-gray-300 pl-0 md:pl-8 mb-4 mt-4 max-w-2xl mx-auto">
+      <ul className="list-none text-lg md:text-xl 2xl:text-2xl text-gray-300 pl-0 md:pl-8 mb-4 mt-4 max-w-2xl mx-auto 2xl:space-y-2">
         <li>
           - Frontend frameworks (
           <span className="text-gray-500 font-medium">React</span>,
@@ -39,26 +39,26 @@ const WebDev = () => {
           <span className="text-gray-500 font-medium">Docker</span>)
         </li>
       </ul>
-      <div className="flex flex-row flex-wrap gap-3 mt-8 justify-center items-center w-full">
+      <div className="flex flex-row flex-wrap gap-3 mt-8 justify-center items-center w-full 2xl:max-w-[800px]">
         <img
           src="https://skillicons.dev/icons?i=react,nextjs,vite,tailwind,express,nodejs,postman&theme=dark"
           alt="Web Dev Skills"
-          className="h-14"
+          className="h-14 2xl:h-24"
         />
         <img
           src="/Convex.png"
           alt="Convex"
-          className="h-14 w-14 rounded-xl bg-[#fbfcfc] p-1"
+          className="h-14 w-14 2xl:h-24 2xl:w-24 rounded-xl bg-[#fbfcfc] p-1"
         />
         <img
           src="/Clerk.png"
           alt="Clerk"
-          className="h-14 w-14 rounded-xl bg-[#fefefe] p-1"
+          className="h-14 w-14 2xl:h-24 2xl:w-24 rounded-xl bg-[#fefefe] p-1"
         />
         <img
           src="https://skillicons.dev/icons?i=mongodb,docker&theme=dark"
           alt="Web Dev Skills 2"
-          className="h-14"
+          className="h-14 2xl:h-24"
         />
       </div>
     </div>

@@ -46,7 +46,7 @@ const GMplatform = () => {
   return (
     <div className="w-full flex flex-col items-center gap-6">
       {/* 1. Title */}
-      <h3 className="text-3xl font-bold text-secondary text-center">
+      <h3 className="text-3xl 2xl:text-5xl font-bold text-secondary text-center">
         GM-platform
       </h3>
 
@@ -61,13 +61,13 @@ const GMplatform = () => {
           <img
             src="/GM-platform.png"
             alt="GM-platform preview"
-            className="w-full h-auto aspect-[16/6] object-cover rounded-lg shadow hover:opacity-80 transition-opacity border border-base-300"
+            className="w-full h-auto aspect-[16/6] 2xl:h-[360px] object-cover rounded-lg shadow hover:opacity-80 transition-opacity border border-base-300"
           />
         </a>
         {/* Toggle features button */}
         <button
           onClick={() => setShowFeatures(!showFeatures)}
-          className="absolute top-4 right-4 bg-primary text-primary-content px-3 py-2 rounded-lg shadow-lg hover:bg-primary/90 transition-all z-10"
+          className="absolute top-4 right-4 bg-primary text-primary-content 2xl:text-xl px-3 py-2 rounded-lg shadow-lg hover:bg-primary/90 transition-all z-10"
         >
           {showFeatures ? "Hide features" : "Click for more"}
         </button>
@@ -79,9 +79,9 @@ const GMplatform = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.3 }}
-              className="absolute top-0 left-0 h-full w-full md:w-1/2 bg-base-200/90 flex items-center justify-center p-4 rounded-lg backdrop-blur-sm"
+              className="absolute top-0 left-0 h-full w-full md:w-3/5 bg-base-200/90 flex items-center justify-center p-4 rounded-lg backdrop-blur-sm"
             >
-              <ul className="list-disc list-outside space-y-3 pl-6 text-sm text-gray-400 w-full max-w-xs">
+              <ul className="list-disc list-outside space-y-3 pl-6 text-sm 2xl:text-lg text-gray-400 w-full max-w-xs 2xl:max-w-md">
                 {features.map((f, i) => (
                   <li key={i}>{highlightFeatureText(f)}</li>
                 ))}
@@ -104,7 +104,7 @@ const GMplatform = () => {
             <img
               src={`/${img}`}
               alt={`GM-platform screenshot ${idx + 1}`}
-              className="w-48 h-32 object-contain rounded-lg shadow border border-base-300 bg-base-100"
+              className="w-48 h-32 2xl:w-72 2xl:h-48 object-contain rounded-lg shadow border border-base-300 bg-base-100"
               loading="lazy"
             />
           </button>
@@ -125,7 +125,7 @@ const GMplatform = () => {
             style={{ background: "#222" }}
           />
           <button
-            className="absolute top-4 right-4 text-primary text-3xl font-bold bg-black bg-opacity-70 rounded-full px-3 py-1 hover:bg-opacity-90"
+            className="absolute top-4 right-4 text-primary text-3xl 2xl:text-6xl font-bold bg-black bg-opacity-70 rounded-full px-3 py-1 2xl:px-3.5 2xl:py-0.5 hover:bg-opacity-90"
             onClick={() => setModalImg(null)}
             aria-label="Close preview"
             type="button"
@@ -136,8 +136,8 @@ const GMplatform = () => {
       )}
 
       {/* 3. Description Row */}
-      <div className="w-full max-w-3xl">
-        <p className="text-primary text-base text-justify">
+      <div className="w-full max-w-3xl 2xl:max-w-5xl">
+        <p className="text-primary text-base text-justify 2xl:text-2xl 2xl:leading-normal">
           GM-platform is a pixel art 2D platformer game developed in
           collaboration with two other contributors using GameMaker Studio 2
           (game logic) and Aseprite (pixel art). Players must collect keys and
@@ -151,7 +151,7 @@ const GMplatform = () => {
           href="https://github.com/Cloudyday56/GM-platform"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-outline font-semibold"
+          className="btn btn-secondary font-semibold 2xl:px-8 2xl:text-2xl"
         >
           Repo
         </a>
