@@ -25,38 +25,26 @@ const Background = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    // Mesh config for left side
-    const leftCols = 10;
-    const leftRows = 7;
-    const leftWidth = Math.min(width * 0.45, 600);
-    const leftNodeSpacingX = leftWidth / (leftCols - 1);
-    const leftNodeSpacingY = height / (leftRows + 1);
+    // Organic mesh: randomly scatter nodes in left region and top right cluster
     type Node = { baseX: number; baseY: number; phase: number };
     const nodes: Node[] = [];
-    for (let y = 0; y < leftRows; y++) {
-      for (let x = 0; x < leftCols; x++) {
-        nodes.push({
-          baseX: x * leftNodeSpacingX + 40,
-          baseY: (y + 1) * leftNodeSpacingY,
-          phase: Math.random() * Math.PI * 2,
-        });
-      }
+    // Left region
+    const leftNodeCount = 32;
+    for (let i = 0; i < leftNodeCount; i++) {
+      nodes.push({
+        baseX: Math.random() * Math.min(width * 0.45, 600) + 40,
+        baseY: Math.random() * (height - 80) + 40,
+        phase: Math.random() * Math.PI * 2,
+      });
     }
-    // Small cluster in top right
-    const clusterCols = 4;
-    const clusterRows = 2;
-    const clusterSpacingX = 60;
-    const clusterSpacingY = 60;
-    const clusterStartX = width - clusterCols * clusterSpacingX - 40;
-    const clusterStartY = 40;
-    for (let y = 0; y < clusterRows; y++) {
-      for (let x = 0; x < clusterCols; x++) {
-        nodes.push({
-          baseX: clusterStartX + x * clusterSpacingX,
-          baseY: clusterStartY + y * clusterSpacingY,
-          phase: Math.random() * Math.PI * 2,
-        });
-      }
+    // Top right cluster
+    const clusterNodeCount = 8;
+    for (let i = 0; i < clusterNodeCount; i++) {
+      nodes.push({
+        baseX: width - Math.random() * 220 - 40,
+        baseY: Math.random() * 120 + 40,
+        phase: Math.random() * Math.PI * 2,
+      });
     }
 
     function animateMesh(time: number) {
@@ -71,47 +59,23 @@ const Background = () => {
           y: n.baseY + wave,
         };
       });
-      // Draw lines for left mesh
+      // Draw organic lines: connect each node to its 3 nearest neighbors
       ctx.save();
       ctx.strokeStyle = "rgba(255, 200, 40, 0.18)";
       ctx.lineWidth = 2;
-      for (let i = 0; i < leftCols * leftRows; i++) {
+      for (let i = 0; i < animatedNodes.length; i++) {
         const a = animatedNodes[i];
-        // Connect to right
-        if ((i + 1) % leftCols !== 0) {
-          const b = animatedNodes[i + 1];
+        // Find nearest neighbors
+        const distances = animatedNodes.map((b, j) => ({
+          idx: j,
+          dist: Math.hypot(a.x - b.x, a.y - b.y),
+        }));
+        distances.sort((d1, d2) => d1.dist - d2.dist);
+        for (let k = 1; k <= 3; k++) {
+          const neighbor = animatedNodes[distances[k].idx];
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-        // Connect to below
-        if (i + leftCols < leftCols * leftRows) {
-          const b = animatedNodes[i + leftCols];
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-      // Draw lines for top right cluster
-      const clusterOffset = leftCols * leftRows;
-      for (let i = clusterOffset; i < animatedNodes.length; i++) {
-        const a = animatedNodes[i];
-        // Connect to right
-        if ((i - clusterOffset + 1) % clusterCols !== 0) {
-          const b = animatedNodes[i + 1];
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-        // Connect to below
-        if (i + clusterCols < animatedNodes.length) {
-          const b = animatedNodes[i + clusterCols];
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
+          ctx.lineTo(neighbor.x, neighbor.y);
           ctx.stroke();
         }
       }
