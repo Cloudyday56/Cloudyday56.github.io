@@ -10,7 +10,7 @@ function App() {
   return (
     <div
       data-theme="luxury"
-      className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth relative"
+      className="h-screen overflow-y-scroll md:snap-y md:snap-mandatory scroll-smooth relative"
     >
       <Background />
       <Navbar />
