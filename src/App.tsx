@@ -4,13 +4,15 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Links from "./components/Links";
 import Footer from "./components/Footer";
+import Background from "./components/Background";
 
 function App() {
   return (
     <div
       data-theme="luxury"
-      className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth"
+      className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth relative"
     >
+      <Background />
       <Navbar />
       <div className="min-h-screen snap-start">
         <Intro />
