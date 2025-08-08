@@ -14,19 +14,30 @@ function App() {
     >
       <Background />
       <Navbar />
-      <div className="min-h-screen snap-start">
-        <Intro />
-      </div>
-      <div className="min-h-screen snap-start">
-        <Skills />
-      </div>
-      <div className="min-h-screen snap-start">
-        <Projects />
-      </div>
-      <div className="min-h-screen snap-start flex flex-col h-full justify-between">
-        <div className="flex-1 flex items-center justify-center pb-10">
-          <Links />
+      {/* Desktop layout */}
+      <div className="hidden md:block">
+        <div className="min-h-screen snap-start">
+          <Intro />
         </div>
+        <div className="min-h-screen snap-start">
+          <Skills />
+        </div>
+        <div className="min-h-screen snap-start">
+          <Projects />
+        </div>
+        <div className="min-h-screen snap-start flex flex-col h-full justify-between">
+          <div className="flex-1 flex items-center justify-center pb-10">
+            <Links />
+          </div>
+          <Footer />
+        </div>
+      </div>
+      {/* Mobile layout */}
+      <div className="block md:hidden">
+        <Intro />
+        <Skills />
+        <Projects />
+        <Links />
         <Footer />
       </div>
     </div>
