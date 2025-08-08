@@ -10,7 +10,7 @@ function App() {
   return (
     <div
       data-theme="luxury"
-      className="h-screen overflow-y-scroll md:snap-y md:snap-mandatory scroll-smooth relative"
+      className="min-h-screen md:h-screen md:overflow-y-scroll md:snap-y md:snap-mandatory scroll-smooth relative"
     >
       <Background />
       <Navbar />
@@ -36,6 +36,7 @@ function App() {
       <div className="block md:hidden">
         <Intro />
         <Skills />
+        <div className="w-full h-36 md:hidden" />
         <Projects />
         <Links />
         <Footer />
