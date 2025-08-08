@@ -1,4 +1,13 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+const highlightTech = [
+  "platformer mechanics",
+  "Challenging level design",
+  "death count",
+  "art",
+  "smooth controls",
+];
 
 const features = [
   "Classic platformer mechanics: double jump, wall climbing, gravity change, and more",
@@ -7,8 +16,33 @@ const features = [
   "Original art and smooth controls (coyote time and buffers) for engaging gameplay",
 ];
 
+function highlightFeatureText(text: string) {
+  let result: (string | React.ReactNode)[] = [text];
+  highlightTech.forEach((tech) => {
+    result = result.flatMap((part) => {
+      if (typeof part !== "string") return [part];
+      const split = part.split(tech);
+      if (split.length === 1) return [part];
+      const arr: (string | React.ReactNode)[] = [];
+      split.forEach((seg, i) => {
+        arr.push(seg);
+        if (i < split.length - 1) {
+          arr.push(
+            <span className="text-primary font-semibold" key={tech + i}>
+              {tech}
+            </span>
+          );
+        }
+      });
+      return arr;
+    });
+  });
+  return result;
+}
+
 const GMplatform = () => {
   const [modalImg, setModalImg] = useState<string | null>(null);
+  const [showFeatures, setShowFeatures] = useState(false);
   return (
     <div className="w-full flex flex-col items-center gap-6">
       {/* 1. Title */}
@@ -16,25 +50,45 @@ const GMplatform = () => {
         GM-platform
       </h3>
 
-      {/* 2. Image and Features Row */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8">
+      {/* 2. Image with Features Overlay */}
+      <div className="relative w-full max-w-2xl">
         <a
           href="https://github.com/Cloudyday56/GM-platform"
           target="_blank"
           rel="noopener noreferrer"
-          className="block md:w-2/5 w-full max-w-xl"
+          className="block w-full"
         >
           <img
             src="/GM-platform.png"
             alt="GM-platform preview"
-            className="w-full h-auto aspect-video object-cover rounded-lg shadow hover:opacity-80 transition-opacity border border-base-300"
+            className="w-full h-auto aspect-[16/6] object-cover rounded-lg shadow hover:opacity-80 transition-opacity border border-base-300"
           />
         </a>
-        <ul className="list-disc list-outside space-y-2 pl-6 text-sm text-gray-400 bg-base-200 rounded-lg p-4 w-full md:w-2/5 max-w-md">
-          {features.map((f, i) => (
-            <li key={i}>{f}</li>
-          ))}
-        </ul>
+        {/* Toggle features button */}
+        <button
+          onClick={() => setShowFeatures(!showFeatures)}
+          className="absolute top-4 right-4 bg-primary text-primary-content px-3 py-2 rounded-lg shadow-lg hover:bg-primary/90 transition-all z-10"
+        >
+          {showFeatures ? "Hide features" : "Click for more"}
+        </button>
+        {/* Features Overlay */}
+        <AnimatePresence>
+          {showFeatures && (
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.3 }}
+              className="absolute top-0 left-0 h-full w-full md:w-1/2 bg-base-200/90 flex items-center justify-center p-4 rounded-lg backdrop-blur-sm"
+            >
+              <ul className="list-disc list-outside space-y-3 pl-6 text-sm text-gray-400 w-full max-w-xs">
+                {features.map((f, i) => (
+                  <li key={i}>{highlightFeatureText(f)}</li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* 2b. Game screenshots gallery */}

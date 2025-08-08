@@ -1,9 +1,34 @@
+const highlightTech = ["socket.io"];
 const features = [
   "User authentication and secure sign-in",
   "Private one-on-one chat between users",
   "Real-time messaging and updates using socket.io",
   "Simple, responsive UI for seamless chatting",
 ];
+
+function highlightFeatureText(text: string) {
+  let result: (string | React.ReactNode)[] = [text];
+  highlightTech.forEach((tech) => {
+    result = result.flatMap((part) => {
+      if (typeof part !== "string") return [part];
+      const split = part.split(tech);
+      if (split.length === 1) return [part];
+      const arr: (string | React.ReactNode)[] = [];
+      split.forEach((seg, i) => {
+        arr.push(seg);
+        if (i < split.length - 1) {
+          arr.push(
+            <span className="text-primary font-semibold" key={tech + i}>
+              {tech}
+            </span>
+          );
+        }
+      });
+      return arr;
+    });
+  });
+  return result;
+}
 
 const TeaChat = () => {
   return (
@@ -44,7 +69,7 @@ const TeaChat = () => {
         </div>
         <ul className="list-disc list-outside space-y-2 pl-6 text-sm text-gray-400 bg-base-200 rounded-lg p-4 w-full md:w-2/5 max-w-xs">
           {features.map((f, i) => (
-            <li key={i}>{f}</li>
+            <li key={i}>{highlightFeatureText(f)}</li>
           ))}
         </ul>
       </div>
