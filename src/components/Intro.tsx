@@ -1,5 +1,4 @@
-// Profile pic
-// Background
+import { motion } from "framer-motion";
 
 const Intro = () => {
   return (
@@ -8,7 +7,12 @@ const Intro = () => {
       className="flex min-h-screen max-w-7xl mx-auto bg-base-800 px-0 py-8 items-center w-full"
     >
       {/* Bio */}
-      <div className="flex flex-col flex-[7] items-start text-left pl-8 pt-64">
+      <motion.div
+        className="flex flex-col flex-[7] items-start text-left pl-8 pt-64"
+        initial={{ x: -160, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.1 }}
+      >
         <p className="font-montserrat text-6xl text-primary max-w-3xl">
           Hi! <br />
           I'm Ru, <br />
@@ -16,9 +20,14 @@ const Intro = () => {
           at McGill University. <br />
           Welcome to my portfolio!
         </p>
-      </div>
+      </motion.div>
       {/* Profile Picture and Title */}
-      <div className="flex flex-col flex-[3] pr-8 items-center">
+      <motion.div
+        className="flex flex-col flex-[3] pr-8 items-center"
+        initial={{ x: 160, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.3 }}
+      >
         <img
           src="/profile.png"
           alt="Profile"
@@ -32,7 +41,7 @@ const Intro = () => {
             Software Engineer
           </span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
