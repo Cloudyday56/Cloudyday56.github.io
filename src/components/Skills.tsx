@@ -101,7 +101,7 @@ const Skills = () => {
               key={section.key}
               aria-label={`Go to ${section.key} skills`}
               onClick={() => setCurrentIdx(idx)}
-              className={`w-3 h-3 rounded-full border-2 transition-all duration-200
+              className={`w-3 h-3 2xl:w-5 2xl:h-5 rounded-full border-2 transition-all duration-200
                 ${
                   idx === currentIdx
                     ? "bg-primary border-primary scale-125"

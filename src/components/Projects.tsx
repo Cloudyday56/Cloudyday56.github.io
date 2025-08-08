@@ -94,13 +94,13 @@ const Projects = () => {
           </AnimatePresence>
         </div>
         {/* Dot Indicator */}
-        <div className="flex flex-col gap-3 items-center absolute right-4 top-1/2 -translate-y-1/2 z-20">
+        <div className="flex flex-col gap-3 2xl:gap-5 items-center absolute right-4 top-1/2 -translate-y-1/2 z-20">
           {projectScreens.map((screen, idx) => (
             <button
               key={screen.key}
               aria-label={`Go to ${screen.key} project`}
               onClick={() => setCurrentIdx(idx)}
-              className={`w-3 h-3 rounded-full border-2 transition-all duration-200
+              className={`w-3 h-3 2xl:w-5 2xl:h-5 rounded-full border-2 transition-all duration-200
                 ${
                   idx === currentIdx
                     ? "bg-primary border-primary scale-125"
