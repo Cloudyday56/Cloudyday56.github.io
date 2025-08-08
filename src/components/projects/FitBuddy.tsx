@@ -1,30 +1,44 @@
+const highlightTech = ["Clerk", "Convex", "Gemini API"];
+const features = [
+  "User authentication and management via Clerk and Convex",
+  "Interactive AI 'phone call' to collect user fitness goals and preferences",
+  "Generates customized workout and nutrition plans using Gemini API",
+  "Clean, responsive UI for easy plan tracking",
+];
+
+function highlightFeatureText(text: string) {
+  let result: (string | React.ReactNode)[] = [text];
+  highlightTech.forEach((tech) => {
+    result = result.flatMap((part) => {
+      if (typeof part !== "string") return [part];
+      const split = part.split(tech);
+      if (split.length === 1) return [part];
+      const arr: (string | React.ReactNode)[] = [];
+      split.forEach((seg, i) => {
+        arr.push(seg);
+        if (i < split.length - 1) {
+          arr.push(
+            <span className="text-primary font-semibold" key={tech + i}>
+              {tech}
+            </span>
+          );
+        }
+      });
+      return arr;
+    });
+  });
+  return result;
+}
+
 const FitBuddy = () => {
   return (
-    <div className="bg-base-200 rounded-lg p-5 flex flex-col md:flex-row justify-between min-h-[160px]">
-      <div className="flex-1 flex flex-col justify-between">
-        <span className="text-2xl font-semibold text-secondary mb-2">
+    <div className="w-full flex flex-col items-center gap-2">
+      {/* Top row: Title and Buttons */}
+      <div className="w-full flex flex-row items-center justify-between">
+        <h3 className="text-2xl font-bold text-secondary text-left">
           FitBuddy - Fitness AI Agent
-        </span>
-        <div className="text-gray-300 mb-4">
-          <p className="max-w-[70%]">
-            FitBuddy is an AI-powered fitness assistant developed with Next.js.
-            It collects user information through an interactive "phone call" and
-            generates personalized workout and diet plans tailored to each
-            user's needs.
-          </p>
-          <ul className="list-disc list-outside space-y-1 mt-2 pl-4 text-sm text-gray-400">
-            <li>User authentication and management via Clerk and Convex</li>
-            <li>
-              Interactive AI "phone call" to collect user fitness goals and
-              preferences
-            </li>
-            <li>
-              Generates customized workout and nutrition plans using Gemini API
-            </li>
-            <li>Clean, responsive UI for easy plan tracking</li>
-          </ul>
-        </div>
-        <div className="flex gap-3 mt-auto">
+        </h3>
+        <div className="flex gap-3 pr-8">
           <a
             href="https://fitbuddy-ai.vercel.app"
             target="_blank"
@@ -43,12 +57,30 @@ const FitBuddy = () => {
           </a>
         </div>
       </div>
-      <div className="flex items-center justify-center md:ml-8 mt-4 md:mt-0 w-full md:w-40">
-        <img
-          src="/Fitbuddy1.png"
-          alt="FitBuddy preview"
-          className="w-full md:w-40 h-24 object-cover rounded-lg shadow"
-        />
+
+      {/* Middle row: Image and Features */}
+      <div className="w-full flex flex-col md:flex-row items-center justify-center gap-4">
+        <div className="block md:w-2/5 w-full max-w-md">
+          <img
+            src="/Fitbuddy1.png"
+            alt="FitBuddy preview"
+            className="w-full h-auto aspect-video object-cover rounded-lg shadow border border-base-300"
+          />
+        </div>
+        <ul className="list-disc list-outside space-y-2 pl-6 text-sm text-gray-400 bg-base-200 rounded-lg p-4 w-full md:w-2/5 max-w-xs">
+          {features.map((f, i) => (
+            <li key={i}>{highlightFeatureText(f)}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Bottom row: Description */}
+      <div className="w-full max-w-3xl px-8">
+        <p className="text-primary text-base text-justify">
+          FitBuddy is an AI fitness assistant developed with Next.js. It
+          collects user information through an interactive "phone call" and
+          generates workout and diet plans tailored to each user's needs.
+        </p>
       </div>
     </div>
   );
