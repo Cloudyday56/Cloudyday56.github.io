@@ -7,13 +7,13 @@ const Background = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d"); // 2-dimensional
     if (!ctx) return;
     let width = window.innerWidth;
     let height = window.innerHeight;
     let animationId: number;
 
-    // Responsive resize
+    // Adapt to different screen sizes
     function resize() {
       width = window.innerWidth;
       height = window.innerHeight;
@@ -25,11 +25,11 @@ const Background = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    // Organic mesh: randomly scatter nodes in left region and top right cluster
+    // Organic mesh
     type Node = { baseX: number; baseY: number; phase: number };
     const nodes: Node[] = [];
     // Left region
-    const leftNodeCount = 32;
+    const leftNodeCount = 40;
     for (let i = 0; i < leftNodeCount; i++) {
       nodes.push({
         baseX: Math.random() * Math.min(width * 0.45, 600) + 40,
@@ -37,7 +37,7 @@ const Background = () => {
         phase: Math.random() * Math.PI * 2,
       });
     }
-    // Top right cluster
+    // Top right
     const clusterNodeCount = 8;
     for (let i = 0; i < clusterNodeCount; i++) {
       nodes.push({
@@ -84,7 +84,7 @@ const Background = () => {
       for (const n of animatedNodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 200, 40, 0.45)";
+        ctx.fillStyle = "rgba(255, 200, 40, 0.65)";
         ctx.shadowColor = "#ffd700";
         ctx.shadowBlur = 8;
         ctx.fill();
