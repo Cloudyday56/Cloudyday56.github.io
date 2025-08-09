@@ -1,8 +1,11 @@
 import { useRef, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 
 // Animated wavy mesh network background using canvas
 const Background = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const isMobile = useMediaQuery({ maxWidth: 639 });
+  const isPC = useMediaQuery({ minWidth: 1440 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -28,23 +31,65 @@ const Background = () => {
     // Organic mesh
     type Node = { baseX: number; baseY: number; phase: number };
     const nodes: Node[] = [];
-    // Left region
-    const leftNodeCount = 40;
-    for (let i = 0; i < leftNodeCount; i++) {
-      nodes.push({
-        baseX: Math.random() * Math.min(width * 0.45, 600) + 40,
-        baseY: Math.random() * (height - 80) + 40,
-        phase: Math.random() * Math.PI * 2,
-      });
-    }
-    // Top right
-    const clusterNodeCount = 8;
-    for (let i = 0; i < clusterNodeCount; i++) {
-      nodes.push({
-        baseX: width - Math.random() * 220 - 40,
-        baseY: Math.random() * 120 + 40,
-        phase: Math.random() * Math.PI * 2,
-      });
+    let leftNodeCount = 40,
+      clusterNodeCount = 8;
+    if (isMobile) {
+      leftNodeCount = 14;
+      clusterNodeCount = 3;
+      // Top region
+      for (let i = 0; i < Math.floor(leftNodeCount / 2); i++) {
+        nodes.push({
+          baseX: Math.random() * (width - 60) + 30,
+          baseY: Math.random() * 120 + 30,
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
+      // Bottom region
+      for (let i = 0; i < Math.ceil(leftNodeCount / 2); i++) {
+        nodes.push({
+          baseX: Math.random() * (width - 60) + 30,
+          baseY: height - Math.random() * 120 - 30,
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
+
+    } else if (isPC) {
+      leftNodeCount = 44;
+      clusterNodeCount = 10;
+      // Left region (wider and taller)
+      for (let i = 0; i < leftNodeCount; i++) {
+        nodes.push({
+          baseX: Math.random() * Math.min(width * 0.6, 900) + 60,
+          baseY: Math.random() * (height - 120) + 60,
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
+      // Top right (wider and taller)
+      for (let i = 0; i < clusterNodeCount; i++) {
+        nodes.push({
+          baseX: width - Math.random() * 340 - 60,
+          baseY: Math.random() * 220 + 60,
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
+    } else {
+      // Laptop: original regions
+      leftNodeCount = 40;
+      clusterNodeCount = 8;
+      for (let i = 0; i < leftNodeCount; i++) {
+        nodes.push({
+          baseX: Math.random() * Math.min(width * 0.45, 600) + 40,
+          baseY: Math.random() * (height - 80) + 40,
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
+      for (let i = 0; i < clusterNodeCount; i++) {
+        nodes.push({
+          baseX: width - Math.random() * 220 - 40,
+          baseY: Math.random() * 120 + 40,
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
     }
 
     function animateMesh(time: number) {
