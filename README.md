@@ -1,4 +1,5 @@
 # CR-portfolio
 
-My Portfolio Website
+Welcome to my portfolio!
+Visit my website: [cr-profile.me](https://cr-profile.me)
 
