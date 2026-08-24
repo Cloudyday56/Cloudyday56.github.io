@@ -1,43 +1,38 @@
+import { useState } from "react";
+import Background from "./components/Background";
 import Navbar from "./components/Navbar";
 import Intro from "./components/Intro";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Links from "./components/Links";
-import Background from "./components/Background";
+import SectionWrapper from "./components/SectionWrapper";
+import ScrollManager from "./components/ScrollManager";
+import SectionDots from "./components/SectionDots";
 
-function App() {
+export default function App() {
+    const [activeSection, setActiveSection] = useState("intro");
+
     return (
-        <div className="min-h-screen scroll-smooth relative">
-            <Background/>
-            <Navbar/>
-            {/* Desktop layout */}
-            <div className="hidden md:block relative z-10">
-                <div className="min-h-screen">
-                    <Intro/>
-                </div>
-                {/* Experience section */}
-                <div className="min-h-screen">
-                    <Experience/>
-                </div>
-                <div className="min-h-screen">
-                    <Projects/>
-                </div>
-                <div className="min-h-screen flex flex-col h-full justify-between">
-                    <div className="flex-1 flex items-center justify-center pb-10">
-                        <Links/>
-                    </div>
-                </div>
-            </div>
-            {/* Mobile layout */}
-            <div className="block md:hidden relative z-10">
-                <Intro/>
-                <div className="w-full h-36 md:hidden"/>
-                <Experience/>
-                <Projects/>
-                <Links/>
-            </div>
+        <div className="md:overflow-hidden md:h-screen">
+            <Background />
+            <Navbar activeSection={activeSection} />
+            <SectionDots activeSection={activeSection} onNavigate={setActiveSection} />
+            <ScrollManager activeSection={activeSection} onNavigate={setActiveSection} />
+
+            <main className="relative z-10">
+                <SectionWrapper id="intro" activeSection={activeSection} onActivate={setActiveSection}>
+                    <Intro />
+                </SectionWrapper>
+                <SectionWrapper id="experience" activeSection={activeSection} onActivate={setActiveSection}>
+                    <Experience />
+                </SectionWrapper>
+                <SectionWrapper id="projects" activeSection={activeSection} onActivate={setActiveSection}>
+                    <Projects />
+                </SectionWrapper>
+                <SectionWrapper id="links" activeSection={activeSection} onActivate={setActiveSection}>
+                    <Links />
+                </SectionWrapper>
+            </main>
         </div>
     );
 }
-
-export default App;
