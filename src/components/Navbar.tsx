@@ -1,66 +1,71 @@
 const Navbar = () => {
   return (
-    <nav className="w-full h-16 2xl:h-20 px-2 md:px-6 md:pl-10 md:pr-10 bg-base-200/60 backdrop-blur border-b border-gray-700/30 fixed top-0 left-0 z-50 flex items-center justify-between">
-      {/* Mobile layout: stacked rows inside navbar */}
-      <div className="md:hidden flex flex-row w-full items-center justify-between h-full px-4">
-        <a href="#">
-          <img
-            src="favicon2.svg"
-            alt="Logo"
-            className="w-12 h-12 rounded-lg hover:scale-110 transition-transform duration-200"
-          />
-        </a>
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-sm btn-primary font-semibold"
-        >
-          View Resume
-        </a>
-      </div>
+      <nav className="w-full h-16 2xl:h-20 px-4 md:px-10 bg-base-200/80 backdrop-blur border-b border-base-300/80 shadow-lg fixed top-0 left-0 z-50 flex items-center justify-between transition-all duration-300">
 
-      {/* Desktop layout */}
-      <div className="hidden md:flex items-center gap-2">
-        <a href="#">
-          <img
-            src="favicon2.svg"
-            alt="Logo"
-            className="w-12 h-12 2xl:w-[70px] 2xl:h-[70px] rounded-lg hover:scale-110 transition-transform duration-200"
-          />
-        </a>
-      </div>
-      <ul className="hidden md:flex gap-8 2xl:gap-12 text-base 2xl:text-2xl font-medium absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <li>
-          <a href="#intro" className="hover:text-primary transition-colors">
-            Bio
+        {/* Desktop layout */}
+        <div className="hidden md:flex items-center gap-2">
+          <a href="#" className="flex items-center gap-2 group">
+            <svg
+                viewBox="0 0 24 24"
+                className="w-10 h-10 2xl:w-14 2xl:h-14 text-secondary group-hover:text-primary group-hover:scale-110 transition-all duration-300"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            >
+              <path d="M8 2c.5 1.5-.5 2.5 0 4" className="group-hover:-translate-y-1 transition-transform duration-500" />
+              <path d="M12 2c.5 1.5-.5 2.5 0 4" className="group-hover:-translate-y-0.5 transition-transform duration-500 delay-75" />
+              <path d="M5 8h10a1 1 0 0 1 1 1v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z" />
+              <path d="M16 10h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1" />
+            </svg>
           </a>
-        </li>
-        <li>
-          <a href="#skills" className="hover:text-primary transition-colors">
-            Skills
+        </div>
+
+        {/* Mobile layout */}
+        <div className="md:hidden flex flex-row w-full items-center justify-between h-full px-2">
+          <a href="#" className="flex items-center gap-2 group">
+            <svg
+                viewBox="0 0 24 24"
+                className="w-10 h-10 text-secondary group-hover:text-primary group-hover:scale-110 transition-all duration-300"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            >
+              <path d="M8 2c.5 1.5-.5 2.5 0 4" className="group-hover:-translate-y-1 transition-transform duration-500" />
+              <path d="M12 2c.5 1.5-.5 2.5 0 4" className="group-hover:-translate-y-0.5 transition-transform duration-500 delay-75" />
+              <path d="M5 8h10a1 1 0 0 1 1 1v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z" />
+              <path d="M16 10h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1" />
+            </svg>
           </a>
-        </li>
-        <li>
-          <a href="#projects" className="hover:text-primary transition-colors">
-            Projects
-          </a>
-        </li>
-        <li>
-          <a href="#links" className="hover:text-primary transition-colors">
-            Social
-          </a>
-        </li>
-      </ul>
-      <a
-        href="/resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hidden md:inline btn btn-sm btn-primary font-semibold md:py-2 2xl:text-xl 2xl:px-6 2xl:py-0"
-      >
-        View Resume
-      </a>
-    </nav>
+        </div>
+
+        {/* Links */}
+        <ul className="hidden md:flex gap-8 2xl:gap-12 text-base 2xl:text-2xl font-medium absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <li>
+            <a href="#intro" className="text-gray-300 hover:text-primary hover:scale-105 transition-all">
+              Bio
+            </a>
+          </li>
+          <li>
+            <a href="#experience" className="text-gray-300 hover:text-primary hover:scale-105 transition-all">
+              Experience
+            </a>
+          </li>
+          <li>
+            <a href="#projects" className="text-gray-300 hover:text-primary hover:scale-105 transition-all">
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="#links" className="text-gray-300 hover:text-primary hover:scale-105 transition-all">
+              Social
+            </a>
+          </li>
+        </ul>
+      </nav>
   );
 };
 

@@ -1,189 +1,45 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-
-const highlightTech = [
-  "platformer mechanics",
-  "Challenging level design",
-  "death count",
-  "art",
-  "smooth controls",
-];
-
-const features = [
-  "Classic platformer mechanics: double jump, wall climbing, gravity change, and more",
-  "Challenging level design focused on skillful movement and timing",
-  "Total death count is tracked, adding an extra layer of competition to the game",
-  "Original art and smooth controls (coyote time and buffers) for engaging gameplay",
-];
-
-function highlightFeatureText(text: string) {
-  let result: (string | React.ReactNode)[] = [text];
-  highlightTech.forEach((tech) => {
-    result = result.flatMap((part) => {
-      if (typeof part !== "string") return [part];
-      const split = part.split(tech);
-      if (split.length === 1) return [part];
-      const arr: (string | React.ReactNode)[] = [];
-      split.forEach((seg, i) => {
-        arr.push(seg);
-        if (i < split.length - 1) {
-          arr.push(
-            <span className="text-primary font-semibold" key={tech + i}>
-              {tech}
-            </span>
-          );
-        }
-      });
-      return arr;
-    });
-  });
-  return result;
-}
-
 const GMplatform = () => {
-  const [modalImg, setModalImg] = useState<string | null>(null);
-  const [showFeatures, setShowFeatures] = useState(false);
   return (
-    <div className="w-full flex flex-col items-center gap-6">
-      {/* Top row: Title and Buttons (responsive) */}
-      <div className="w-full">
-        {/* Mobile: vertical layout */}
-        <div className="flex md:hidden flex-col justify-center">
-          <h3 className="text-3xl font-bold text-secondary text-center">
+      <div className="w-full flex flex-col items-center gap-4 bg-base-200 p-6 rounded-2xl border border-base-300 shadow-xl hover:border-secondary/40 transition-all duration-300 h-full justify-between">
+        <div className="w-full flex flex-col gap-4">
+          <h3 className="text-2xl md:text-3xl font-bold text-secondary text-center font-montserrat">
             GM-platform
           </h3>
-          <div className="flex gap-3 mt-2 justify-center">
+
+          <div className="w-full overflow-hidden rounded-xl border border-base-300">
             <a
+                href="https://github.com/Cloudyday56/GM-platform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full overflow-hidden"
+            >
+              <img
+                  src="/GM-platform.png"
+                  alt="GM-platform preview"
+                  className="w-full h-auto aspect-[16/10] object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </a>
+          </div>
+
+          <p className="text-primary text-sm md:text-base text-justify leading-relaxed">
+            GM-platform is a pixel art 2D platformer game developed in
+            collaboration with two other contributors using GameMaker Studio 2
+            (game logic) and Aseprite (pixel art). Players must collect keys and
+            reach the end of each level using special movement mechanics.
+          </p>
+        </div>
+
+        <div className="flex gap-4 mt-4 justify-center w-full">
+          <a
               href="https://github.com/Cloudyday56/GM-platform"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-sm btn-secondary font-semibold 2xl:px-4 2xl:text-xl"
-            >
-              Repo
-            </a>
-          </div>
-        </div>
-        {/* Desktop: large, centered title */}
-        <div className="hidden md:flex w-full flex-row items-center justify-center">
-          <h3 className="text-3xl 2xl:text-5xl font-bold text-secondary text-center w-full">
-            GM-platform
-          </h3>
-        </div>
-      </div>
-
-      {/* 2. Image with Features Overlay/Accordion */}
-      <div className="relative w-full max-w-xs md:max-w-2xl 2xl:max-w-4xl">
-        <a
-          href="https://github.com/Cloudyday56/GM-platform"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full"
-        >
-          <img
-            src="/GM-platform.png"
-            alt="GM-platform preview"
-            className="w-full h-auto aspect-[16/6] 2xl:h-[360px] object-cover rounded-lg shadow hover:opacity-80 transition-opacity border border-base-300"
-          />
-        </a>
-
-        {/* Features for desktop */}
-        <button
-          onClick={() => setShowFeatures(!showFeatures)}
-          className="hidden md:block absolute top-4 right-4 bg-primary text-primary-content md:text-base 2xl:text-xl px-3 py-2 rounded-lg shadow-lg hover:bg-primary/90 transition-all z-10"
-        >
-          {showFeatures ? "Hide features" : "Click for more"}
-        </button>
-        <AnimatePresence>
-          {showFeatures && (
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.3 }}
-              className="hidden md:flex absolute top-0 left-0 h-full w-full md:w-3/5 bg-base-200/90 items-center justify-center p-4 rounded-lg backdrop-blur-sm"
-            >
-              <ul className="list-disc list-outside space-y-3 pl-6 text-sm md:text-base 2xl:text-lg text-gray-400 w-full max-w-xs md:max-w-md 2xl:max-w-md">
-                {features.map((f, i) => (
-                  <li key={i}>{highlightFeatureText(f)}</li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* 2b. Game screenshots gallery */}
-      <div className="flex gap-4 mt-2 overflow-x-auto w-full justify-center">
-        {["GM4.png", "GM2.png", "GM3.png"].map((img, idx) => (
-          <button
-            key={img}
-            onClick={() => setModalImg(`/${img}`)}
-            className="focus:outline-none"
-            style={{ background: "none", border: "none", padding: 0 }}
-            type="button"
+              className="px-6 py-2 text-sm md:text-base font-semibold rounded-lg bg-secondary text-primary-content hover:opacity-90 transition-all duration-200"
           >
-            <img
-              src={`/${img}`}
-              alt={`GM-platform screenshot ${idx + 1}`}
-              className="w-48 h-32 2xl:w-72 2xl:h-48 object-contain rounded-lg shadow border border-base-300 bg-base-100"
-              loading="lazy"
-            />
-          </button>
-        ))}
-      </div>
-
-      {/* Modal for image preview */}
-      {modalImg && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
-          onClick={() => setModalImg(null)}
-        >
-          <img
-            src={modalImg}
-            alt="GM-platform full screenshot"
-            className="max-w-full max-h-[90vh] rounded-lg shadow-lg border-2 border-base-300"
-            onClick={(e) => e.stopPropagation()}
-            style={{ background: "#222" }}
-          />
-          <button
-            className="absolute top-4 right-4 text-primary text-3xl 2xl:text-6xl font-bold bg-black bg-opacity-70 rounded-full px-3 py-1 2xl:px-3.5 2xl:py-0.5 hover:bg-opacity-90"
-            onClick={() => setModalImg(null)}
-            aria-label="Close preview"
-            type="button"
-          >
-            ×
-          </button>
+            Repo
+          </a>
         </div>
-      )}
-
-      {/* 3. Description Row */}
-      <div className="w-full max-w-[295px] md:max-w-3xl 2xl:max-w-5xl">
-        <p className="text-primary text-sm md:text-base text-justify 2xl:text-2xl 2xl:leading-normal">
-          GM-platform is a pixel art 2D platformer game developed in
-          collaboration with two other contributors using GameMaker Studio 2
-          (game logic) and Aseprite (pixel art). Players must collect keys and
-          reach the end of each level using special movement mechanics.
-        </p>
-        {/* Features list for mobile only, under description */}
-        <ul className="block md:hidden list-disc list-outside space-y-2 pl-6 text-xs text-gray-400 bg-base-200 rounded-lg p-4 w-full max-w-xs mt-4">
-          {features.map((f, i) => (
-            <li key={i}>{highlightFeatureText(f)}</li>
-          ))}
-        </ul>
       </div>
-
-      {/* 4. Buttons Row (desktop only) */}
-      <div className="hidden md:flex gap-4 mt-2 justify-center">
-        <a
-          href="https://github.com/Cloudyday56/GM-platform"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-secondary font-semibold text-base 2xl:px-8 2xl:text-2xl"
-        >
-          Repo
-        </a>
-      </div>
-    </div>
   );
 };
 
