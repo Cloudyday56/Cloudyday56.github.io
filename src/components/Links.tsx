@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const PHRASES = ["connect!", "collaborate!", "build things!"];
+const PHRASES = ["connect!", "build things!"];
 
 const Links = () => {
     const [phraseIdx, setPhraseIdx] = useState(0);
@@ -31,7 +31,6 @@ const Links = () => {
             className="flex items-center justify-center w-full h-full px-4 py-6 md:py-0"
         >
             <div className="flex flex-col items-center gap-8 md:gap-10 mt-14 md:mt-0">
-                {/* Heading with typewriter */}
                 <div className="text-center">
                     <h2 className="font-montserrat text-4xl md:text-7xl text-primary leading-tight">
                         Let's
@@ -51,7 +50,7 @@ const Links = () => {
                         className="group flex flex-col items-center gap-2"
                     >
                         <div className="bg-base-200/80 backdrop-blur-sm border border-base-300 rounded-xl p-4 group-hover:border-secondary/50 group-hover:scale-110 transition-all duration-200">
-                            <img src="github-mark-white.svg" alt="GitHub" className="w-10 h-10 md:w-14 md:h-14" />
+                            <img src="/github-mark-white.svg" alt="GitHub" className="w-10 h-10 md:w-14 md:h-14" />
                         </div>
                         <span className="text-xs text-gray-400 group-hover:text-gray-200 transition-colors">GitHub</span>
                     </a>
@@ -62,18 +61,20 @@ const Links = () => {
                         className="group flex flex-col items-center gap-2"
                     >
                         <div className="bg-base-200/80 backdrop-blur-sm border border-base-300 rounded-xl p-4 group-hover:border-secondary/50 group-hover:scale-110 transition-all duration-200">
-                            <img src="Linkedin.svg" alt="LinkedIn" className="w-10 h-10 md:w-14 md:h-14" />
+                            <img src="/Linkedin.svg" alt="LinkedIn" className="w-10 h-10 md:w-14 md:h-14" />
                         </div>
                         <span className="text-xs text-gray-400 group-hover:text-gray-200 transition-colors">LinkedIn</span>
                     </a>
                 </div>
 
-                {/* Scroll hint on desktop — last section so show "back to top" */}
                 <button
                     className="hidden md:flex flex-col items-center gap-1 text-xs text-gray-500 hover:text-gray-300 transition-colors group mt-2"
                     onClick={() => {
-                        const el = document.getElementById("intro");
-                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                        if (window.location.hash === "#intro") {
+                            window.dispatchEvent(new Event("hashchange"));
+                        } else {
+                            window.location.hash = "#intro";
+                        }
                     }}
                 >
                     <svg viewBox="0 0 24 24" className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2">

@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import {useEffect, useRef, type ReactNode} from "react";
 
 interface SectionWrapperProps {
     id: string;
@@ -7,10 +7,9 @@ interface SectionWrapperProps {
     children: ReactNode;
 }
 
-const SectionWrapper = ({ id, activeSection, onActivate, children }: SectionWrapperProps) => {
+const SectionWrapper = ({id, activeSection, onActivate, children}: SectionWrapperProps) => {
     const ref = useRef<HTMLDivElement>(null);
 
-    // Observe intersection for mobile natural-scroll active tracking
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
@@ -18,7 +17,7 @@ const SectionWrapper = ({ id, activeSection, onActivate, children }: SectionWrap
             ([entry]) => {
                 if (entry.isIntersecting) onActivate(id);
             },
-            { threshold: 0.5 }
+            {threshold: 0.2}
         );
         observer.observe(el);
         return () => observer.disconnect();
@@ -27,23 +26,12 @@ const SectionWrapper = ({ id, activeSection, onActivate, children }: SectionWrap
     const isActive = activeSection === id;
 
     return (
-        /*
-         * Desktop: fixed-height viewport sections with CSS transition.
-         * We use a combination of:
-         *   - opacity  (fade in/out)
-         *   - translateY (slide up when leaving, slide in from below when entering)
-         *   - pointer-events none when inactive so hidden sections aren't tabbable
-         *
-         * Mobile (< md): plain block sections that stack and scroll normally.
-         */
         <section
             id={id}
             ref={ref}
             className={[
-                // Mobile: normal stacked layout
                 "w-full py-6 px-4",
-                // Desktop: full-viewport panel with transition
-                "md:fixed md:inset-0 md:flex md:items-center md:justify-center md:py-0 md:px-0 md:pt-16",
+                "md:fixed md:inset-0 md:flex md:items-center md:justify-center md:py-0 md:px-0 md:pt-16 md:pb-24",
                 "md:transition-all md:duration-700 md:ease-in-out",
                 isActive
                     ? "md:opacity-100 md:translate-y-0 md:pointer-events-auto md:z-10"
