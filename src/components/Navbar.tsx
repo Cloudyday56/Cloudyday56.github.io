@@ -41,7 +41,6 @@ const Navbar = ({activeSection}: { activeSection?: string }) => {
                 </svg>
             </a>
 
-            {/* Desktop links */}
             <ul className="hidden md:flex gap-8 text-base font-medium absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 {SECTIONS.map((id) => (
                     <li key={id} className="relative">
@@ -60,7 +59,6 @@ const Navbar = ({activeSection}: { activeSection?: string }) => {
                 ))}
             </ul>
 
-            {/* Mobile links */}
             <ul className="md:hidden flex gap-4 text-sm font-medium">
                 {SECTIONS.map((id) => (
                     <li key={id} className="relative">

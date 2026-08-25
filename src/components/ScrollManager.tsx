@@ -16,13 +16,27 @@ const ScrollManager = ({activeSection, onNavigate}: ScrollManagerProps) => {
             const next = idx + direction;
             if (next >= 0 && next < SECTIONS.length) {
                 onNavigate(SECTIONS[next]);
-                // Scroll to anchor so URL hash and IntersectionObserver stay in sync on mobile
                 const el = document.getElementById(SECTIONS[next]);
                 if (el) el.scrollIntoView({behavior: "smooth"});
             }
         },
         [activeSection, onNavigate]
     );
+
+    useEffect(() => {
+        const hash = window.location.hash.replace("#", "");
+        const target = SECTIONS.includes(hash) ? hash : "intro";
+        window.scrollTo({top: 0, left: 0, behavior: "instant"});
+        history.replaceState(null, "", `#${target}`);
+        onNavigate(target);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        if (activeSection) {
+            history.replaceState(null, "", `#${activeSection}`);
+        }
+    }, [activeSection]);
 
     useEffect(() => {
         const isDesktop = () => window.innerWidth >= 768;

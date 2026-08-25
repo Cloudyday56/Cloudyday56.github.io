@@ -41,7 +41,6 @@ const Links = () => {
                     </h2>
                 </div>
 
-                {/* Social icons */}
                 <div className="flex gap-8">
                     <a
                         href="https://github.com/Cloudyday56"
@@ -52,7 +51,6 @@ const Links = () => {
                         <div className="bg-base-200/80 backdrop-blur-sm border border-base-300 rounded-xl p-4 group-hover:border-secondary/50 group-hover:scale-110 transition-all duration-200">
                             <img src="/github-mark-white.svg" alt="GitHub" className="w-10 h-10 md:w-14 md:h-14" />
                         </div>
-                        <span className="text-xs text-gray-400 group-hover:text-gray-200 transition-colors">GitHub</span>
                     </a>
                     <a
                         href="https://www.linkedin.com/in/ru-chen-aa3069327"
@@ -63,7 +61,6 @@ const Links = () => {
                         <div className="bg-base-200/80 backdrop-blur-sm border border-base-300 rounded-xl p-4 group-hover:border-secondary/50 group-hover:scale-110 transition-all duration-200">
                             <img src="/Linkedin.svg" alt="LinkedIn" className="w-10 h-10 md:w-14 md:h-14" />
                         </div>
-                        <span className="text-xs text-gray-400 group-hover:text-gray-200 transition-colors">LinkedIn</span>
                     </a>
                 </div>
 

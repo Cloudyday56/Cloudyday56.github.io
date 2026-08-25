@@ -10,8 +10,11 @@ const Background = () => {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+        resize();
 
         const particles: { x: number; y: number; r: number; dx: number; dy: number; alpha: number }[] = [];
         for (let i = 0; i < 55; i++) {
@@ -42,31 +45,37 @@ const Background = () => {
         };
         draw();
 
-        const handleResize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-        window.addEventListener("resize", handleResize);
-
+        window.addEventListener("resize", resize);
         return () => {
             cancelAnimationFrame(animId);
-            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("resize", resize);
         };
     }, []);
 
     return (
-        <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden bg-black">
+        <div
+            className="pointer-events-none z-0 bg-black"
+            style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100dvh",
+            }}
+        >
             <motion.div
-                className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 initial={{opacity: 0, scale: 1.05}}
                 animate={{opacity: 0.75, scale: 1}}
                 transition={{duration: 1.8, ease: "easeOut"}}
                 style={{
                     backgroundImage: "url('/blue-green-painting.png')",
                     filter: "brightness(0.85) contrast(1.05) saturate(1.0)",
+                    backgroundAttachment: "scroll",
+                    willChange: "opacity, transform",
                 }}
             />
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/40 via-transparent to-black/60"/>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"/>
             <canvas ref={canvasRef} className="absolute inset-0 w-full h-full"/>
         </div>
     );
